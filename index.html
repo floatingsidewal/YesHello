@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YesHello - Feel free to just say hi!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 60px 40px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 1.3em;
+            color: #7f8c8d;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .intro {
+            background: #fff9e6;
+            border-left: 5px solid #f39c12;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            color: #e74c3c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 2em;
+            border-bottom: 3px solid #ffecd2;
+            padding-bottom: 10px;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .status-card {
+            padding: 25px;
+            border-radius: 10px;
+            border: 3px solid;
+            transition: transform 0.2s;
+        }
+
+        .status-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .status-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .available {
+            background: #d5f4e6;
+            border-color: #27ae60;
+        }
+
+        .available h3 {
+            color: #27ae60;
+        }
+
+        .busy {
+            background: #fff3cd;
+            border-color: #f39c12;
+        }
+
+        .busy h3 {
+            color: #f39c12;
+        }
+
+        .offline {
+            background: #fadbd8;
+            border-color: #e74c3c;
+        }
+
+        .offline h3 {
+            color: #e74c3c;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .no-hello {
+            padding: 15px;
+            background: #fadbd8;
+            border-radius: 8px;
+            border-left: 4px solid #c0392b;
+        }
+
+        .yes-hello {
+            padding: 15px;
+            background: #d5f4e6;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .comparison h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .no-hello h4 {
+            color: #c0392b;
+        }
+
+        .yes-hello h4 {
+            color: #27ae60;
+        }
+
+        .philosophy {
+            background: #e8f4f8;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .philosophy ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .philosophy li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1em;
+        }
+
+        .philosophy li:before {
+            content: "💚";
+            position: absolute;
+            left: 0;
+        }
+
+        .examples {
+            margin-top: 30px;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .example-box strong {
+            color: #e74c3c;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yes! Hello! 👋</h1>
+        <p class="tagline">A focus on empathy, first impressions, and not being a douche.</p>
+
+        <div class="intro">
+            <p><strong>You've probably heard of NoHello.</strong> It says: "Don't just say 'hi' in chat—get to the point!"</p>
+            <p><strong>That's great for efficiency.</strong> But YesHello is the counterbalance for when efficiency isn't everything.</p>
+            <p><strong>The premise is simple:</strong> If my status is set to Available, feel free to just be human. Chat. Say hi. Ask how I'm doing. You don't need a P0 incident to talk to me.</p>
+        </div>
+
+        <h2>Status Guide 🚦</h2>
+        <div class="status-grid">
+            <div class="status-card available">
+                <h3>🟢 Available</h3>
+                <p>Just vibing, say hi! No agenda required. Want to chat about your weekend? Go for it. Random thoughts? I'm here for it.</p>
+            </div>
+            <div class="status-card busy">
+                <h3>🟡 Busy</h3>
+                <p>I'm in the zone, but I won't bite. Quick hellos are fine. Long chats might need to wait, but you're not interrupting anything life-or-death.</p>
+            </div>
+            <div class="status-card offline">
+                <h3>🔴 Offline</h3>
+                <p>I'm probably touching grass, sleeping, or finally watching that show everyone won't shut up about. Leave a message!</p>
+            </div>
+        </div>
+
+        <h2>NoHello vs YesHello 🤝</h2>
+
+        <div class="comparison">
+            <div class="no-hello">
+                <h4>❌ NoHello says:</h4>
+                <p>"Don't waste time with 'hello'—get to the point!"</p>
+            </div>
+            <div class="yes-hello">
+                <h4>✅ YesHello says:</h4>
+                <p>"Hello IS the point sometimes. You're not a ticket system."</p>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <div class="no-hello">
+                <h4>❌ NoHello says:</h4>
+                <p>"Every message should have a purpose."</p>
+            </div>
+            <div class="yes-hello">
+                <h4>✅ YesHello says:</h4>
+                <p>"Building rapport IS a purpose. Connection counts."</p>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <div class="no-hello">
+                <h4>❌ NoHello says:</h4>
+                <p>"Async communication means never waiting for responses."</p>
+            </div>
+            <div class="yes-hello">
+                <h4>✅ YesHello says:</h4>
+                <p>"Sometimes a 2-minute chat beats a 2-hour email thread."</p>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <div class="no-hello">
+                <h4>❌ NoHello mindset:</h4>
+                <p>"Maximize productivity at all costs."</p>
+            </div>
+            <div class="yes-hello">
+                <h4>✅ YesHello mindset:</h4>
+                <p>"Maximize humanity. Productivity follows."</p>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <div class="no-hello">
+                <h4>❌ NoHello energy:</h4>
+                <p>"I'm too busy for small talk."</p>
+            </div>
+            <div class="yes-hello">
+                <h4>✅ YesHello energy:</h4>
+                <p>"I'm never too busy to treat you like a person."</p>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <div class="no-hello">
+                <h4>❌ NoHello assumes:</h4>
+                <p>"Everyone's time is equally scarce."</p>
+            </div>
+            <div class="yes-hello">
+                <h4>✅ YesHello acknowledges:</h4>
+                <p>"Sometimes people just need to feel seen."</p>
+            </div>
+        </div>
+
+        <h2>The YesHello Philosophy 💭</h2>
+        <div class="philosophy">
+            <ul>
+                <li><strong>Life's too short</strong> to only talk when there's a P0 incident</li>
+                <li><strong>Your coworkers are not API endpoints</strong>—they're humans who sometimes need connection</li>
+                <li><strong>Sometimes "how was your weekend?"</strong> is more valuable than "quick question"</li>
+                <li><strong>A 30-second "hey, how are you?"</strong> can prevent a 3-hour misunderstanding later</li>
+                <li><strong>Efficiency is great,</strong> but efficiency without empathy is just being a robot</li>
+                <li><strong>Not every interaction needs ROI</strong>—some things are just... nice</li>
+                <li><strong>The best teams</strong> aren't the ones that only talk about work</li>
+                <li><strong>Mental health matters</strong> more than shaving 30 seconds off a Slack thread</li>
+                <li><strong>If someone feels comfortable saying hi,</strong> they'll feel comfortable asking for help when it matters</li>
+                <li><strong>You can respect someone's time</strong> AND treat them warmly—they're not mutually exclusive</li>
+            </ul>
+        </div>
+
+        <h2>When YesHello Applies 🎯</h2>
+        <div class="examples">
+            <div class="example-box">
+                <strong>Scenario:</strong> You want to ask a question but worry it's "dumb"<br>
+                <strong>YesHello approach:</strong> Just ask. Lead with "quick question" or "hey!" if you want. I promise you're not bothering me.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You're having a rough day and need to vent<br>
+                <strong>YesHello approach:</strong> "Hey, got a minute?" is totally fine. You don't need to write a formal problem statement.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You saw something funny and want to share<br>
+                <strong>YesHello approach:</strong> Share it! Laughter is underrated in remote work. Start with "lol check this out" if you want.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You want to pair program but feel awkward asking<br>
+                <strong>YesHello approach:</strong> "Want to pair on something?" is a complete sentence. No need for a calendar invite with a formal agenda.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> Monday morning and you're just checking in<br>
+                <strong>YesHello approach:</strong> "Morning! How was your weekend?" is perfectly valid and actually helps team morale.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You want clarification on something but it's not urgent<br>
+                <strong>YesHello approach:</strong> Ask anyway! "Hey, when you have a sec..." is totally fine. I'll respond when I can.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You're new and feeling overwhelmed<br>
+                <strong>YesHello approach:</strong> Say so! "Hi, I'm struggling with X" is exactly what you should send. We all started somewhere.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You just want to say thanks for something<br>
+                <strong>YesHello approach:</strong> Do it! "Hey, thanks for your help earlier!" makes people's day. Gratitude is never wasted.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You're procrastinating and want a distraction<br>
+                <strong>YesHello approach:</strong> Honestly? If I'm available, I might be too. "Taking a break, how's it going?" is fine.
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario:</strong> You disagree with a decision and want to discuss<br>
+                <strong>YesHello approach:</strong> "Can we chat about X? I have some thoughts" is great. Open dialogue beats silent resentment.
+            </div>
+        </div>
+
+        <h2>The Bottom Line 🎬</h2>
+        <div class="intro">
+            <p><strong>NoHello is right</strong> when you're in heads-down mode, working across timezones, or dealing with truly urgent matters. Be respectful of people's time and attention.</p>
+            <p><strong>But YesHello is the reminder</strong> that work is also about relationships, trust, and being human together. If someone's status says "Available," they're giving you permission to just... be you.</p>
+            <p><strong>So yes, hello.</strong> How are you doing? 💚</p>
+        </div>
+
+        <footer>
+            <p>YesHello is a playful response to the <a href="https://nohello.net" target="_blank" style="color: #e74c3c;">NoHello movement</a>.</p>
+            <p>Both have their place. Use your judgment and be kind.</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">Made with empathy (and mild sarcasm about work culture) 🌈</p>
+        </footer>
+    </div>
+</body>
+</html>
