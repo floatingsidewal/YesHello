@@ -9,6 +9,7 @@
 This is for those moments when:
 - Your status says "Available" and you mean it
 - You want coworkers to feel comfortable just... being human
+- Your time is valuable & you are valuable - otherwise people wouldn't bother you 🧐
 - You believe efficiency and empathy aren't mutually exclusive
 - You're tired of treating every conversation like a support ticket
 
